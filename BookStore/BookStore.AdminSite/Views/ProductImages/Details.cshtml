@@ -1,0 +1,50 @@
+﻿@model BookStore.AdminSite.Models.ProductImage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductImage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductImageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿body{
+	background-color: beige;
+}
+
+img.alignText{
+	float: left;
+}
+
+h1.logoTitle{
+	color: darkturquoise;
+	font-family: 'Pacifico', cursive;
+	font-size: 32px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	width: 100%;
+	background-color: black;
+}
+
+li {
+    float: left;
+}
+
+li a{
+	color: white;
+	font-family: 'Segoe UI';
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	padding: 8px 16px;
+    background-color: black;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.SocialMedia{
+	float: right;
+	border: 2px solid silver;
+	padding: 6px;
+}
+
+i{
+	color: grey;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 24px;
+}
+
+small{
+	color: silver;
+	font-family: 'Segoe UI';
+}
