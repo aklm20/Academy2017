@@ -28,6 +28,8 @@ namespace BookStore.AdminSite.Models
         public string ProductKeywords { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<bool> ProductActive { get; set; }
+        public Nullable<System.DateTime> ProductCreateDateTime { get; set; }
+        public Nullable<System.DateTime> ProductUpdateDateTime { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

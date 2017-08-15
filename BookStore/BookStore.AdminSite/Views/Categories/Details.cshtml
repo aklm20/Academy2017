@@ -34,9 +34,24 @@
             @Html.DisplayFor(model => model.CategoryActive)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryCreateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryCreateDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryUpdateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryUpdateDateTime)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryID, categorycreatedatetime = Model.CategoryCreateDateTime }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

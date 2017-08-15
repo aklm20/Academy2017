@@ -42,9 +42,24 @@
             @Html.DisplayFor(model => model.Product.ProductName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageCreateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageCreateDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUpdateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUpdateDateTime)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductImageID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductImageID, imagecreatedatetime = Model.ImageCreateDateTime}) |
     @Html.ActionLink("Back to List", "Index")
 </p>

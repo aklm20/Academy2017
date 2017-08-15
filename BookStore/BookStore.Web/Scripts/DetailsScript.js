@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     loadProduct();
-
 });
 
 function loadProduct() {
@@ -17,15 +16,18 @@ function FindMyProduct(id) {
     return ProductDetails;
 }
 
-
-//Dynamic build your collection
 function buildMyProduct(myProduct) {
     var html = "";
-    html += "<div class='Catalog ProducItem'>";
+    html += "<div class='Catalog ProductItem'>";
     html += "<div>" + myProduct.title + "</a></div>";
     html += "<div><img class='Catalog' src='" + myProduct.imgUrl + "' /></div>";
-    html += "<div>" + myProduct.description + "</div></div>";
-
+    html += "<div>" + myProduct.model + "</div>";
+    html += "<div>" + myProduct.price + "</div>";
+    html += "<div>" + myProduct.description + "</div>";
+    for(i in myProduct.imgsUrl){
+        html += "<div><img class='Catalog' src='" + myProduct.imgsUrl[i] + "'v/></div>";
+    }
+    html += "</div>";
     $("#MyDynamicProductDetail").append(html);
 }
 
@@ -34,10 +36,7 @@ function getJsonFromUrl() {
     var result = {};
     query.split("&").forEach(function (part) {
         var item = part.split("=");
-
-        //Decode to avoid errors due to blank spaces on the URL
         result[item[0]] = decodeURIComponent(item[1]);
     });
-    //we need only the ID
     return result.id;
 }

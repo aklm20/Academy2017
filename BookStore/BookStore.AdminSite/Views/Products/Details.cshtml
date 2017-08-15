@@ -66,9 +66,24 @@
             @Html.DisplayFor(model => model.Category.CategoryName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCreateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductCreateDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductUpdateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductUpdateDateTime)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID, productcreatedatetime = Model.ProductCreateDateTime }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

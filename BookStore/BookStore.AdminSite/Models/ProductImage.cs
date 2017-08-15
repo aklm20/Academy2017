@@ -19,6 +19,8 @@ namespace BookStore.AdminSite.Models
         public string ImageURL { get; set; }
         public Nullable<int> ProductID { get; set; }
         public Nullable<bool> ImageActive { get; set; }
+        public Nullable<System.DateTime> ImageCreateDateTime { get; set; }
+        public Nullable<System.DateTime> ImageUpdateDateTime { get; set; }
     
         public virtual Product Product { get; set; }
     }

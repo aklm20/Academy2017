@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -13,6 +13,8 @@
           <Property Name="CategoryName" Type="varchar" MaxLength="50" />
           <Property Name="CategoryDescription" Type="varchar(max)" />
           <Property Name="CategoryActive" Type="bit" />
+          <Property Name="CategoryCreateDateTime" Type="datetime" />
+          <Property Name="CategoryUpdateDateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -26,6 +28,8 @@
           <Property Name="ProductKeywords" Type="varchar" MaxLength="50" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="ProductActive" Type="bit" />
+          <Property Name="ProductCreateDateTime" Type="datetime" />
+          <Property Name="ProductUpdateDateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
@@ -36,6 +40,8 @@
           <Property Name="ImageURL" Type="varchar(max)" />
           <Property Name="ProductID" Type="int" />
           <Property Name="ImageActive" Type="bit" />
+          <Property Name="ImageCreateDateTime" Type="datetime" />
+          <Property Name="ImageUpdateDateTime" Type="datetime" />
         </EntityType>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -74,8 +80,7 @@
             <End Role="ProductImage" EntitySet="ProductImage" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BookStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -88,6 +93,8 @@
           <Property Name="CategoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CategoryActive" Type="Boolean" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+          <Property Name="CategoryCreateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CategoryUpdateDateTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -103,6 +110,8 @@
           <Property Name="ProductActive" Type="Boolean" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="ProductImages" Relationship="Self.FK_ProductImage_Product" FromRole="Product" ToRole="ProductImage" />
+          <Property Name="ProductCreateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ProductUpdateDateTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
@@ -114,6 +123,8 @@
           <Property Name="ProductID" Type="Int32" />
           <Property Name="ImageActive" Type="Boolean" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductImage_Product" FromRole="ProductImage" ToRole="Product" />
+          <Property Name="ImageCreateDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ImageUpdateDateTime" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -161,6 +172,8 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="BookStoreModel.Category">
               <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryUpdateDateTime" ColumnName="CategoryUpdateDateTime" />
+                <ScalarProperty Name="CategoryCreateDateTime" ColumnName="CategoryCreateDateTime" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
@@ -171,6 +184,8 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="BookStoreModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductUpdateDateTime" ColumnName="ProductUpdateDateTime" />
+                <ScalarProperty Name="ProductCreateDateTime" ColumnName="ProductCreateDateTime" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
@@ -185,6 +200,8 @@
           <EntitySetMapping Name="ProductImages">
             <EntityTypeMapping TypeName="BookStoreModel.ProductImage">
               <MappingFragment StoreEntitySet="ProductImage">
+                <ScalarProperty Name="ImageUpdateDateTime" ColumnName="ImageUpdateDateTime" />
+                <ScalarProperty Name="ImageCreateDateTime" ColumnName="ImageCreateDateTime" />
                 <ScalarProperty Name="ProductImageID" ColumnName="ProductImageID" />
                 <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
                 <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />

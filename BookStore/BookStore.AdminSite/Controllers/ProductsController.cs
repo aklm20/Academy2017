@@ -48,8 +48,10 @@ namespace BookStore.AdminSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ProductName,ProductDescription,ProductModel,ProductPrice,ProductKeywords,CategoryID,ProductActive")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,ProductDescription,ProductModel,ProductPrice,ProductKeywords,CategoryID,ProductActive,ProductCreateDateTime,ProductUpdateDateTime")] Product product)
         {
+            product.ProductCreateDateTime = DateTime.Now;
+            product.ProductUpdateDateTime = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -82,8 +84,9 @@ namespace BookStore.AdminSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ProductDescription,ProductModel,ProductPrice,ProductKeywords,CategoryID,ProductActive")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,ProductName,ProductDescription,ProductModel,ProductPrice,ProductKeywords,CategoryID,ProductActive,ProductCreateDateTime")] Product product)
         {
+            product.ProductUpdateDateTime = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;

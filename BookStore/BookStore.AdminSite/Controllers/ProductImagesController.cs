@@ -48,8 +48,10 @@ namespace BookStore.AdminSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductImageID,ImageDescription,ImageURL,ProductID,ImageActive")] ProductImage productImage)
+        public ActionResult Create([Bind(Include = "ProductImageID,ImageDescription,ImageURL,ProductID,ImageActive,ImageCreateDateTime,ImageUpdateTime")] ProductImage productImage)
         {
+            productImage.ImageCreateDateTime = DateTime.Now;
+            productImage.ImageUpdateDateTime = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.ProductImages.Add(productImage);
@@ -82,8 +84,9 @@ namespace BookStore.AdminSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductImageID,ImageDescription,ImageURL,ProductID,ImageActive")] ProductImage productImage)
+        public ActionResult Edit([Bind(Include = "ProductImageID,ImageDescription,ImageURL,ProductID,ImageActive,ImageUpdateDateTime")] ProductImage productImage)
         {
+            productImage.ImageUpdateDateTime = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(productImage).State = EntityState.Modified;
